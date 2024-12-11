@@ -1,0 +1,25 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rochester&display=swap');
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", serif;
+  letter-spacing: 0.1rem;
+}
+.btn:hover
+{
+  background-color: orangered;
+}
+
+.logo
+{
+  font-family: "Michroma", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.2rem;
+  
+}
