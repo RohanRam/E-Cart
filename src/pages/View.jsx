@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTowishlist } from '../Redux/wishlistSlice';
 import { addCartItem } from '../Redux/cart'
 
+import { Toaster, toast } from 'sonner'
 
 
 function View() {
@@ -22,11 +23,16 @@ const handleCart=()=>{
 
   const existingProduct=cart.find(item=>item.id==product.id)
   if(existingProduct){
-    alert("Item already in CART")
+    // alert("Item already in CART")
+    toast.error('Item already in CART')
+
+    
   
     dispatch(addCartItem(product))
   }
   else{dispatch(addCartItem(product))
+    toast.success('Item added to CART')
+
   
   }
     }
@@ -51,13 +57,16 @@ const handleCart=()=>{
 
     if(userWishlist?.includes(product)){
       
-      alert("Item already in WishList")
+      // alert("Item already in WishList")
+      toast.error('Item already in WishList')
+      
       console.log("WI 2");
 
 
   }
   else{
       dispatch(addTowishlist(product))
+      toast.success('Item added to Wishlist')
       console.log("WI 3");
 
   }
@@ -68,7 +77,7 @@ const handleCart=()=>{
     <>
     
     <Header/>
-
+    <Toaster richColors   position="top-center" />
     <div className="row p-5 " style={{marginTop:'100px'}}>
 
         <div className="col-lg-1"></div>

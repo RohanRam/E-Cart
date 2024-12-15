@@ -11,6 +11,9 @@ import Spinner from 'react-bootstrap/Spinner'
 import Pagination from './../components/Pagination';
 import Button from 'react-bootstrap/Button';
 
+import { Toaster, toast } from 'sonner'
+
+
 
 
 
@@ -37,6 +40,8 @@ function Home() {
     <>
 
       <Header insideHome={true} />
+      <Toaster richColors   position="top-center" />
+
 
       <div style={{ marginTop: '150px' }} className="container-fluid">
 

@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeWishlistItem } from '../Redux/wishlistSlice';
 import { addCartItem } from '../Redux/cart';
  
+import { Toaster, toast } from 'sonner'
 
 function Wishlist() {
 
@@ -24,14 +25,16 @@ function Wishlist() {
     const existingProduct = usercart.find(item => item.id == product.id)
 
     if (existingProduct) {
-      alert("product quantity incremented")
+      // alert("product quantity incremented")
       dispatch(addCartItem(product))
       dispatch(removeWishlistItem(product.id))
+      toast.success('Product Quantity Incremented')
 
     }
     else {
       dispatch(addCartItem(product))
       dispatch(removeWishlistItem(product.id))
+      toast.success('Item added to cart')
     }
   }
 
@@ -39,6 +42,7 @@ function Wishlist() {
     <>
 
       <Header />
+      <Toaster richColors   position="top-center" />
 
       <div style={{ marginTop: '150px' }} className="container-fluid p-5">
 
@@ -58,13 +62,14 @@ function Wishlist() {
                 <Card.Title className='text-center fw-bold'>{item.title}</Card.Title>
                 <div className='d-flex justify-content-center'>
 
-                  <button onClick={()=>dispatch(removeWishlistItem(item?.id))} style={{ fontSize: '20px', color: 'red',backgroundColor:'#F4F6FF' }} className='btn btn-outlined me-3'> <i class="fa-solid fa-heart-circle-xmark"></i></button>
+                  <button onClick={()=>{dispatch(removeWishlistItem(item?.id)); toast.success('Item removed from wishlist') } } style={{ fontSize: '20px', color: 'red',backgroundColor:'#F4F6FF' }} className='btn btn-outlined me-3'> <i class="fa-solid fa-heart-circle-xmark"></i></button>
                   <button onClick={()=>handlecart(item)} className='btn btn-outlined me-3' style={{backgroundColor:'#F5F5F7' }}> <i class="fa-solid fa-cart-plus text-success"></i> </button>
 
                 </div>
               </Card.Body>
             </Card>
 
+            
 
           </Col>
             ))
